@@ -4,20 +4,35 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public float speed = 5.0f; // Скорость движения врага вниз
-    public int maxHealth = 3;  // Максимальное количество жизней
+    public float maxHealth = 3;  // Максимальное количество жизней
     public Transform attackLine; // Линия, по достижении которой враг начинает атаковать
 
     public float attackInterval = 1.0f; // Интервал между атаками (в секундах)
     public int ForseAttack;
 
-    private int currentHealth;
+    public float currentHealth;
     private bool isAttacking = false; // Флаг, указывающий, что враг начал атаку
     private bool isCoroutineRunning = false; // Флаг для контроля корутины
 
-    public PlayerFortress PlayerBase;
+    public GameObject coinPrefab; // Префаб монетки
+    public float dropChance = 0.25f; // Вероятность выпадения монетки
 
+    private PlayerFortress PlayerBase;
+    private Wallet PlayerWallet;
+
+    public int ValueAddCoinForDeadEnemy = 1;
+
+   
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("ValueAddCoinForDeadEnemy") != 0)
+        ValueAddCoinForDeadEnemy = PlayerPrefs.GetInt("ValueAddCoinForDeadEnemy");
+    }
     void Start()
     {
+        PlayerWallet = FindObjectOfType<Wallet>();
+        PlayerBase = FindObjectOfType<PlayerFortress>();
         // Устанавливаем начальное количество жизней
         currentHealth = maxHealth;
     }
@@ -59,6 +74,22 @@ public class Enemy : MonoBehaviour
     {
         // Уничтожаем объект врага
         Destroy(gameObject);
+        PlayerWallet.AddCoins(ValueAddCoinForDeadEnemy);
+        PlayerWallet.Score += 100;
+        PlayerPrefs.SetInt("Score", PlayerWallet.Score);
+        PlayerWallet.Money += 1;
+        PlayerPrefs.SetInt("Money", PlayerWallet.Money);
+
+        if (coinPrefab != null && Random.value < dropChance)
+        {
+            Vector2 spawnPosition = (Vector2)transform.position;
+            GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+            Destroy(coin, 3f);
+        }
+
+        //Vector2 spawnPosition = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
+        //GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+        //Destroy(coin, 3f);
     }
 
     void StartAttacking()
@@ -77,7 +108,7 @@ public class Enemy : MonoBehaviour
         while (isAttacking)
         {
             // Логика атаки (например, запуск анимации атаки или вызов метода атаки)
-            Debug.Log("Enemy attacking!");
+            // Debug.Log("Enemy attacking!");
 
             PlayerBase.TakeDamage(ForseAttack);
             // Подождем заданное время до следующей атаки
@@ -87,5 +118,25 @@ public class Enemy : MonoBehaviour
         }
 
         isCoroutineRunning = false;
+    }
+
+    public void SetHealth(float health)
+    {
+        maxHealth = health;
+    }
+
+    public void UpgradeAddMoneyForDeadEnemy(int value)
+    {
+        int PriceForUpgradeMoney = PlayerPrefs.GetInt("PriceForUpgradeMoney");
+        int Money = PlayerPrefs.GetInt("Money");
+        if (Money >= PriceForUpgradeMoney)
+        {
+            Money -= PriceForUpgradeMoney;
+            PriceForUpgradeMoney += 10;
+            PlayerPrefs.SetInt("PriceForUpgradeMoney", PriceForUpgradeMoney);
+            PlayerPrefs.SetInt("Money", Money);
+            ValueAddCoinForDeadEnemy += value;
+            PlayerPrefs.SetInt("ValueAddCoinForDeadEnemy", ValueAddCoinForDeadEnemy);
+        }
     }
 }

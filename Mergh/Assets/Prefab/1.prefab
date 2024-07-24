@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2562730699254536290}
   - component: {fileID: 5889759539341048088}
   - component: {fileID: 6739564001884787679}
-  m_Layer: 0
+  - component: {fileID: 4322826599569817166}
+  m_Layer: 4
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eb11fe11d8d4f409063a8e1b5bf8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextConnectionLable: {fileID: 8757477333229202421, guid: a4ee7085bb4569f49a58d811c4b6ea0c, type: 3}
+  nextConnectionLable: {fileID: 4795829699537102820, guid: a4ee7085bb4569f49a58d811c4b6ea0c, type: 3}
   Level: 1
   gridSize: 2
   DragAndDrop: {fileID: 6739564001884787679}
@@ -180,7 +181,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDragging: 0
   gridSize: 2
-  screenLimit: 0.5
+  screenLimit: 0.4
   gridLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16
+--- !u!114 &4322826599569817166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795829699537102820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9e3a2922a333548951eaf3e0342c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 9012481477305216117, guid: 96729c18490078a4b93b5671886732d8, type: 3}
+  bulletSpeed: 6
+  fireRate: 1.5
+  bulletDamage: 1
+  detectionRange: 100
