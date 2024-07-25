@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.87397814, g: 0.9245283, b: 0.30962977, a: 1}
+  m_Sprite: {fileID: 195234661, guid: 00cfa8bee8bf62d44a4e96dbbe084c5a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,9 +164,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.08528596, y: -0.016193032}
   serializedVersion: 2
-  m_Radius: 0.50000006
+  m_Radius: 0.78715473
 --- !u!114 &6739564001884787679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9e3a2922a333548951eaf3e0342c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 9012481477305216117, guid: 96729c18490078a4b93b5671886732d8, type: 3}
+  bulletPrefab: {fileID: 8356564201613614958, guid: 8f709cd590d05c44fabab735bf8715fb, type: 3}
   bulletSpeed: 8
   fireRate: 0.6
   bulletDamage: 1

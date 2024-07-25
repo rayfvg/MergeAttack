@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class Enemy : MonoBehaviour
 
     public int ValueAddCoinForDeadEnemy = 1;
 
+    public Slider SliderHp;
+
+    
+
    
 
     private void Awake()
@@ -34,7 +39,11 @@ public class Enemy : MonoBehaviour
         PlayerWallet = FindObjectOfType<Wallet>();
         PlayerBase = FindObjectOfType<PlayerFortress>();
         // ”станавливаем начальное количество жизней
+        
         currentHealth = maxHealth;
+        SliderHp.maxValue = maxHealth;
+        SliderHp.value = currentHealth;
+
     }
 
     void Update()
@@ -62,6 +71,8 @@ public class Enemy : MonoBehaviour
     {
         // ”меньшаем количество жизней на урон
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        SliderHp.value = currentHealth;
 
         // ѕровер€ем, не закончились ли жизни
         if (currentHealth <= 0)
@@ -123,6 +134,7 @@ public class Enemy : MonoBehaviour
     public void SetHealth(float health)
     {
         maxHealth = health;
+        
     }
 
     public void UpgradeAddMoneyForDeadEnemy(int value)

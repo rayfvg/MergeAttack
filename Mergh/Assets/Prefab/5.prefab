@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.98, y: -4.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0249, y: 1.1315, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.6509434, g: 0.076762185, b: 0.106371574, a: 1}
+  m_Sprite: {fileID: 714757406, guid: 00cfa8bee8bf62d44a4e96dbbe084c5a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eb11fe11d8d4f409063a8e1b5bf8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextConnectionLable: {fileID: 4795829699537102820}
+  nextConnectionLable: {fileID: 1639328164480566734, guid: 684acb76e2e8651499e808e0ffb24b40, type: 3}
   Level: 5
   gridSize: 2
   DragAndDrop: {fileID: 6739564001884787679}
@@ -164,9 +164,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.0047701625}
   serializedVersion: 2
-  m_Radius: 0.50000006
+  m_Radius: 0.695586
 --- !u!114 &6739564001884787679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9e3a2922a333548951eaf3e0342c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 9012481477305216117, guid: 96729c18490078a4b93b5671886732d8, type: 3}
+  bulletPrefab: {fileID: 2101247743344850345, guid: ac6d2628c1a19ea42a2c1b798c915cb1, type: 3}
   bulletSpeed: 10
   fireRate: 0.2
   bulletDamage: 1

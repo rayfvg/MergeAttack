@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Для перезагрузки сцены
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Для перезагрузки сцены
 
 public class PlayerFortress : MonoBehaviour
 {
@@ -9,18 +10,25 @@ public class PlayerFortress : MonoBehaviour
     public GameObject GameOverMenu;
     public OpenWindow OpenWindows;
 
+    public Slider healthSlider;
+
     
 
     void Start()
     {
         // Устанавливаем начальное количество здоровья
         currentHealth = maxHealth;
+        currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     public void TakeDamage(int damage)
     {
         // Уменьшаем количество здоровья на урон
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Убедитесь, что здоровье не меньше 0 и не больше maxHealth
+        healthSlider.value = currentHealth;
 
         // Проверяем, не закончились ли жизни
         if (currentHealth <= 0)
