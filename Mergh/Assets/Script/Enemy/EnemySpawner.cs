@@ -3,11 +3,13 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // Префаб врага
+    public GameObject[] enemyPrefabs; // Префаб врага
     public Transform[] spawnPoints; // Точки появления врагов
     public float spawnInterval = 5f; // Интервал между появлениями врагов
 
     private float enemyHealth = 5f; // Начальное здоровье врагов
+
+    public Animator animator;
 
     void Start()
     {
@@ -26,12 +28,15 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
+
+        animator.SetTrigger("Spawn");
         // Выбираем случайную точку спавна
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[spawnIndex];
 
         // Создаем врага в выбранной точке спавна
-        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        
+        GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoint.position, spawnPoint.rotation);
         enemy.GetComponent<Enemy>().SetHealth(enemyHealth);
         
 

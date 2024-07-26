@@ -12,7 +12,9 @@ public class PlayerFortress : MonoBehaviour
 
     public Slider healthSlider;
 
-    
+    private Renderer objectRenderer;
+
+
 
     void Start()
     {
@@ -21,6 +23,9 @@ public class PlayerFortress : MonoBehaviour
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
+
+        objectRenderer = GetComponent<Renderer>();
+        UpdateColor();
     }
 
     public void TakeDamage(int damage)
@@ -29,6 +34,7 @@ public class PlayerFortress : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // ”бедитесь, что здоровье не меньше 0 и не больше maxHealth
         healthSlider.value = currentHealth;
+        UpdateColor();
 
         // ѕровер€ем, не закончились ли жизни
         if (currentHealth <= 0)
@@ -37,6 +43,12 @@ public class PlayerFortress : MonoBehaviour
         }
     }
 
+    private void UpdateColor()
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        Color currentColor = Color.Lerp(Color.red, Color.white, healthPercentage);
+        objectRenderer.material.color = currentColor;
+    }
     void Die()
     {
         // ¬ыводим сообщение о проигрыше

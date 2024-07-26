@@ -25,9 +25,10 @@ public class Enemy : MonoBehaviour
 
     public Slider SliderHp;
 
-    
+    public Animator AnimatorEnemy;
+    public GameObject hitEffectPrefab;
 
-   
+
 
     private void Awake()
     {
@@ -70,6 +71,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         // Уменьшаем количество жизней на урон
+        Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         SliderHp.value = currentHealth;
@@ -84,7 +86,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         // Уничтожаем объект врага
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
+        AnimatorEnemy.SetTrigger("Die");
         PlayerWallet.AddCoins(ValueAddCoinForDeadEnemy);
         PlayerWallet.Score += 100;
         PlayerPrefs.SetInt("Score", PlayerWallet.Score);
@@ -110,6 +113,7 @@ public class Enemy : MonoBehaviour
             isAttacking = true;
             isCoroutineRunning = true;
             // Запускаем корутину атаки
+            AnimatorEnemy.SetTrigger("Attack");
             StartCoroutine(AttackCoroutine());
         }
     }
