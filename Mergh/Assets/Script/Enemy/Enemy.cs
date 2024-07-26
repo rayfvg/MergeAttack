@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour
     {
         // Уменьшаем количество жизней на урон
         Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+        
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         SliderHp.value = currentHealth;

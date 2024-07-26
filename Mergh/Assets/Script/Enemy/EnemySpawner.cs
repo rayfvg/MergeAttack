@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval); // Ждем перед спавном следующего врага
             SpawnEnemy();
-            enemyHealth += 1f; // Увеличиваем здоровье для следующего врага
+            enemyHealth += 2f; // Увеличиваем здоровье для следующего врага
         }
     }
 

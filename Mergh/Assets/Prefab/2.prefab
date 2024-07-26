@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
-  gridSize: 2
+  gridSize: 1.7
   screenLimit: 0.4
   gridLayerMask:
     serializedVersion: 2
