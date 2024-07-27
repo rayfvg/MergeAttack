@@ -105,6 +105,7 @@ MonoBehaviour:
   Level: 5
   gridSize: 2
   DragAndDrop: {fileID: 6739564001884787679}
+  audioSource: {fileID: 3842438946364676005, guid: eb9b67c4d6d40d74bb6d42eaee650245, type: 3}
 --- !u!50 &2562730699254536290
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2101247743344850345, guid: ac6d2628c1a19ea42a2c1b798c915cb1, type: 3}
-  bulletSpeed: 10
-  fireRate: 0.2
+  bulletSpeed: 6
+  fireRate: 1.5
   bulletDamage: 1
   detectionRange: 100

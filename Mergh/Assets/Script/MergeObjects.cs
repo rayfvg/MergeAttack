@@ -7,8 +7,14 @@ public class MergeObjects : MonoBehaviour
     public float gridSize = 2.0f; // Размер клеток для размещения нового объекта
     public DragAndDrop DragAndDrop;
 
+  
+
     private bool hasMerged = false; // Флаг, чтобы предотвратить повторное объединение
 
+    private void Start()
+    {
+      
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
          // Проверяем, что уже произошло объединение
@@ -33,7 +39,7 @@ public class MergeObjects : MonoBehaviour
                 // Instantiate(level2Prefab, snappedPosition, Quaternion.identity);
 
                 Instantiate(nextConnectionLable, Vector2.Lerp(transform.position, collision.transform.position, 5f), Quaternion.identity);
-
+                
                 // Уничтожаем оба объекта первого уровня, но только если один из них уже объединился
                 if (!obj.hasMerged)
                 {

@@ -141,7 +141,7 @@ MonoBehaviour:
   currentHealth: 0
   coinPrefab: {fileID: 424307791221058305, guid: deb59002150aae144a58b6c211d3524a, type: 3}
   dropChance: 0.25
-  ValueAddCoinForDeadEnemy: 1
+  ValueAddCoinForDeadEnemy: 0
   SliderHp: {fileID: 714090331516591314}
   AnimatorEnemy: {fileID: 5090815713331988991}
   hitEffectPrefab: {fileID: 180128, guid: 86fff7c56708f9d4cb43e7c58b3e6e3f, type: 3}

@@ -6,7 +6,7 @@ public class DragAndDrop : MonoBehaviour
     private Camera cam;
     public bool isDragging = false;
     private bool isLocked = false; // Флаг для блокировки перетаскивания
-    public float gridSize = 1.8f; // Размер клеток
+    public float gridSize = 2f; // Размер клеток
     public float screenLimit = 0.5f; // Ограничение на перетаскивание в нижней части экрана (в процентах от высоты экрана)
     public LayerMask gridLayerMask; // Маска слоя для проверки занятости ячейки
 

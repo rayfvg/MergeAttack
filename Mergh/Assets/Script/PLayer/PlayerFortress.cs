@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; // Для перезагрузки сцены
+using UnityEngine.UI;
+using YG; // Для перезагрузки сцены
 
 public class PlayerFortress : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class PlayerFortress : MonoBehaviour
     void Die()
     {
         // Выводим сообщение о проигрыше
-        
+      
         OpenWindows.OpenWindowInGame(GameOverMenu);
         // Здесь можно добавить дополнительную логику, например, показать экран поражения
 

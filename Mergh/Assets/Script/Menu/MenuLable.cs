@@ -11,7 +11,7 @@ public class MenuLable : MonoBehaviour
 
     private void OnEnable()
     {
-        RecordText.text = wallet.Score.ToString();
+        RecordText.text = wallet.currentScore.ToString();
         MoneyText.text = wallet.Money.ToString();
     }
 }

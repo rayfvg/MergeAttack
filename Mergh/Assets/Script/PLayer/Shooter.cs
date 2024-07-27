@@ -54,7 +54,7 @@ public class Shooter : MonoBehaviour
         if (Money >= PriceForUpgradeDamage)
         {
             Money -= PriceForUpgradeDamage;
-            PriceForUpgradeDamage += 10;
+            PriceForUpgradeDamage += 30;
             PlayerPrefs.SetInt("PriceForUpgradeDamage", PriceForUpgradeDamage);
             PlayerPrefs.SetInt("Money", Money);
             bulletDamage += value;

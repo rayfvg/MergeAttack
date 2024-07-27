@@ -5,7 +5,13 @@ public class Wallet : MonoBehaviour
 {
     
     public int CoinCount;
+   
+
+    public int currentScore;
     public int Score;
+
+
+
     public int Money;
     public TMP_Text textCoin;
 
@@ -16,7 +22,7 @@ public class Wallet : MonoBehaviour
     {
         PriceForUpgradeDamage = PlayerPrefs.GetInt("PriceForUpgradeDamage");
         PriceForUpgradeMoney = PlayerPrefs.GetInt("PriceForUpgradeMoney");
-        Money = PlayerPrefs.GetInt("Money");
+        
         textCoin.text = CoinCount.ToString();
     }
     public void AddCoins(int amount)

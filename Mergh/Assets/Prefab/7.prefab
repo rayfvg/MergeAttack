@@ -105,6 +105,7 @@ MonoBehaviour:
   Level: 7
   gridSize: 2
   DragAndDrop: {fileID: 6050138981683325960}
+  audioSource: {fileID: 3842438946364676005, guid: eb9b67c4d6d40d74bb6d42eaee650245, type: 3}
 --- !u!50 &7756818517641827491
 Rigidbody2D:
   serializedVersion: 4

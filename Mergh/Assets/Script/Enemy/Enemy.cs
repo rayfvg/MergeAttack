@@ -33,14 +33,18 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         if (PlayerPrefs.GetInt("ValueAddCoinForDeadEnemy") != 0)
-        ValueAddCoinForDeadEnemy = PlayerPrefs.GetInt("ValueAddCoinForDeadEnemy");
+            ValueAddCoinForDeadEnemy = PlayerPrefs.GetInt("ValueAddCoinForDeadEnemy");
     }
     void Start()
     {
+
         PlayerWallet = FindObjectOfType<Wallet>();
         PlayerBase = FindObjectOfType<PlayerFortress>();
         // Устанавливаем начальное количество жизней
-        
+
+        PlayerWallet.Score = PlayerPrefs.GetInt("Score");
+        PlayerWallet.Money = PlayerPrefs.GetInt("Money");
+
         currentHealth = maxHealth;
         SliderHp.maxValue = maxHealth;
         SliderHp.value = currentHealth;
@@ -72,7 +76,9 @@ public class Enemy : MonoBehaviour
     {
         // Уменьшаем количество жизней на урон
         Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
-        
+
+        hitEffectPrefab.GetComponent<ParticleSystem>().Play();
+
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         SliderHp.value = currentHealth;
@@ -90,9 +96,21 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 1f);
         AnimatorEnemy.SetTrigger("Die");
         PlayerWallet.AddCoins(ValueAddCoinForDeadEnemy);
-        PlayerWallet.Score += 100;
-        PlayerPrefs.SetInt("Score", PlayerWallet.Score);
-        PlayerWallet.Money += 1;
+
+       // PlayerWallet.Score += 90;
+       // PlayerPrefs.SetInt("Score", PlayerWallet.Score);
+        PlayerWallet.currentScore += 90;
+        PlayerPrefs.SetInt("currentScore", PlayerWallet.currentScore);
+
+        if (PlayerWallet.currentScore > PlayerWallet.Score)
+        {
+            PlayerWallet.Score = PlayerWallet.currentScore;
+            // Сохраняем новый рекорд в PlayerPrefs
+            PlayerPrefs.SetInt("Score", PlayerWallet.Score);
+        }
+
+
+        PlayerWallet.Money += 6;
         PlayerPrefs.SetInt("Money", PlayerWallet.Money);
 
         if (coinPrefab != null && Random.value < dropChance)
@@ -105,6 +123,7 @@ public class Enemy : MonoBehaviour
         //Vector2 spawnPosition = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
         //GameObject coin = Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
         //Destroy(coin, 3f);
+
     }
 
     void StartAttacking()
@@ -139,7 +158,7 @@ public class Enemy : MonoBehaviour
     public void SetHealth(float health)
     {
         maxHealth = health;
-        
+
     }
 
     public void UpgradeAddMoneyForDeadEnemy(int value)
@@ -149,7 +168,7 @@ public class Enemy : MonoBehaviour
         if (Money >= PriceForUpgradeMoney)
         {
             Money -= PriceForUpgradeMoney;
-            PriceForUpgradeMoney += 10;
+            PriceForUpgradeMoney += 30;
             PlayerPrefs.SetInt("PriceForUpgradeMoney", PriceForUpgradeMoney);
             PlayerPrefs.SetInt("Money", Money);
             ValueAddCoinForDeadEnemy += value;

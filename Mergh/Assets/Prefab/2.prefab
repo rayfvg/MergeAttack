@@ -105,6 +105,7 @@ MonoBehaviour:
   Level: 2
   gridSize: 2
   DragAndDrop: {fileID: 6739564001884787679}
+  audioSource: {fileID: 3842438946364676005, guid: eb9b67c4d6d40d74bb6d42eaee650245, type: 3}
 --- !u!50 &2562730699254536290
 Rigidbody2D:
   serializedVersion: 4
@@ -164,9 +165,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08636302, y: 0}
+  m_Offset: {x: -0.054631233, y: -0.005769372}
   serializedVersion: 2
-  m_Radius: 0.78067994
+  m_Radius: 0.8931838
 --- !u!114 &6739564001884787679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
-  gridSize: 1.7
+  gridSize: 2
   screenLimit: 0.4
   gridLayerMask:
     serializedVersion: 2
@@ -199,6 +200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 588335656115294689, guid: fee9ad3ed16ece443836d11dd7d9d139, type: 3}
   bulletSpeed: 7
-  fireRate: 1
+  fireRate: 1.9
   bulletDamage: 1
   detectionRange: 100
